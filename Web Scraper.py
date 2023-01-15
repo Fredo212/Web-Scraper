@@ -76,8 +76,8 @@ def atLevel(courseLevel, courseDict):
     return courseLevelDict
 
 def main():
-    # capture URL from user input
-    captureUrl = input('Enter URL - ')
+    # URL that we are scraping
+    captureUrl = "https://academiccatalog.umd.edu/undergraduate/approved-courses/inst/"
     # capture course level (100, 200, 300, 0r 400) from user input
     courseLevel = input('Enter level (100, 200, 300, or 400) - ')
     capUrl = getHTML(captureUrl)
