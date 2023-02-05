@@ -1,5 +1,9 @@
 # URL to test: https://academiccatalog.umd.edu/undergraduate/approved-courses/inst/
 
+
+inst_dict = {"INST201": "https://planetterp.com/course/INST201"}
+
+
 # takes URL,
 # returns the list of the rows of the course block
 def get_html(url):
@@ -76,10 +80,18 @@ def at_level(course_level, course_dict):
     return course_level_dict
 
 
+# Takes a string
+# matches the input with dictionary key and returns url for selected course
+def course_match(url2):
+    for url2 in inst_dict:
+        analysis_site = inst_dict[url2]
+    return analysis_site
+
+
 def main():
     # URL that we are scraping
     capture_url = "https://academiccatalog.umd.edu/undergraduate/approved-courses/inst/"
-    # capture course level (100, 200, 300, 0r 400) from user input
+    # capture course level (100, 200, 300, or 400) from user input
     course_level = input('Enter level (100, 200, 300, or 400) - ')
     cap_url = get_html(capture_url)
     code_dict = make_course_dict(cap_url)
@@ -93,8 +105,13 @@ def main():
         continue_scraping = input('Do you want an analysis on a specific course? ')
 
         if continue_scraping.lower() == "yes":
-            course_analysis = input("Type which course you want an analysis on - ")
+            course_analysis = input("Type which course you want an analysis on - ").lower()
+
+            y = course_match(course_analysis)
+            print(y)
+
         else:
+            print("Analysis complete!")
             break
 
 
